@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Открыть Telegram</title>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+
+  if (id) {
+    window.location.href = `tg://user?id=${id}`;
+    setTimeout(() => {
+      alert("Откройте этот сайт на устройстве с установленным Telegram");
+    }, 2000);
+  } else {
+    document.write("Не указан ID пользователя");
+  }
+</script>
+</head>
+<body>
+</body>
+</html>
