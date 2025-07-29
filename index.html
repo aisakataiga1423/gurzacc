@@ -2,21 +2,43 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Открыть Telegram</title>
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
-
-  if (id) {
-    window.location.href = `tg://user?id=${id}`;
-    setTimeout(() => {
-      alert("Откройте этот сайт на устройстве с установленным Telegram");
-    }, 2000);
-  } else {
-    document.write("Не указан ID пользователя");
-  }
-</script>
+<title>Открыть чат в Telegram</title>
+<style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+    a.button {
+        display: inline-block;
+        padding: 12px 20px;
+        background-color: #0088cc;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        border-radius: 8px;
+    }
+    a.button:hover {
+        background-color: #006699;
+    }
+</style>
 </head>
 <body>
+
+<h2>Связаться в Telegram</h2>
+<p id="info"></p>
+<a id="tgLink" class="button" href="#">Открыть чат</a>
+
+<script>
+// Получаем id из URL (?id=)
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+if (id) {
+    // Создаём ссылку tg://user?id=...
+    const link = `tg://user?id=${id}`;
+    document.getElementById("tgLink").href = link;
+    document.getElementById("info").innerText = `Telegram ID: ${id}`;
+} else {
+    document.getElementById("info").innerText = "Не указан ID в ссылке.";
+}
+</script>
+
 </body>
 </html>
